@@ -20,5 +20,7 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::post('/dashboard/driver/simpandriver', [DashboardAdminController::class, 'simpandriver']);
     Route::get('/dashboard/driver/editdriver/{id}', [DashboardAdminController::class, 'editdriver']);
     Route::put('/dashboard/driver/simpanubahdriver', [DashboardAdminController::class, 'simpanubahdriver']);
+    Route::get('/dashboard/driver/editgudang/{id}', [DashboardAdminController::class, 'editgudang']);
+    Route::put('/dashboard/driver/simpanubahgudang', [DashboardAdminController::class, 'simpanubahgudang']);
     Route::delete('/dashboard/driver/hapusdriver/{id}', [DashboardAdminController::class, 'hapusdriver']);
 });
