@@ -21,6 +21,7 @@
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
             </li>
+            @if ((auth()->user()->role) == 1)
             <li class="nav-item mt-3 d-flex align-items-center">
                 <div class="ps-4">
                     <i class="fab fa-laravel" style="color: #f4645f;"></i>
@@ -44,7 +45,6 @@
                     <span class="nav-link-text ms-1">Profile</span>
                 </a>
             </li>
-            
             <li class="nav-item mt-3">
                 <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Pages</h6>
             </li>
@@ -114,13 +114,37 @@
                     <span class="nav-link-text ms-1">Sign Up</span>
                 </a>
             </li>
+            @elseif ((auth()->user()->role) == 4)
+            <li class="nav-item mt-3 d-flex align-items-center">
+                <div class="ps-4">
+                    <i class="fab fa-codepen" style="color: #f4645f;"></i>
+                </div>
+                <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Gudang</h6>
+            </li>
+            <li class="nav-item">
+                <a @if($link == "Product") class="nav-link active" @else class="nav-link" @endif href="/gudang/product">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-bag-17 text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Product</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a @if($link == "Pemesanan") class="nav-link active" @else class="nav-link" @endif href="/gudang/pemesanan">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-basket text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Pemesanan</span>
+                </a>
+            </li>
+            @endif
         </ul>
     </div>
     <div class="sidenav-footer mx-3 ">
         
-        <a href="/docs/bootstrap/overview/argon-dashboard/index.html" target="_blank"
+        {{-- <a href="/docs/bootstrap/overview/argon-dashboard/index.html" target="_blank"
             class="btn btn-dark btn-sm w-100 mb-3">Documentation</a>
         <a class="btn btn-primary btn-sm mb-0 w-100"
-            href="https://www.creative-tim.com/product/argon-dashboard-pro-laravel" target="_blank" type="button">Upgrade to PRO</a>
+            href="https://www.creative-tim.com/product/argon-dashboard-pro-laravel" target="_blank" type="button">Upgrade to PRO</a> --}}
     </div>
 </aside>

@@ -57,16 +57,25 @@ class MainController extends Controller
             'password' => 'required'
         ]);
 
-        $kueri = "SELECT `is_active` FROM `users` WHERE `email` = '".$credentials['email']."'";
+        $kueri = "SELECT `is_active`,  `role` FROM `users` WHERE `email` = '".$credentials['email']."'";
         $getData = DB::select($kueri);
         $aktif = $getData[0]->is_active;
+        $role = $getData[0]->role;
 
-        // var_dump($getData); die;
+        // var_dump($role); die;
 
         if (Auth::attempt($credentials) && $aktif == 1) {
             $request->session()->regenerate();
+            if ($role == 1) {
+                return redirect()->intended('/dashboard');
+            }
+            else if($role == 2){
+                return redirect()->intended('/');
+            }
+            else if($role == 4){
+                return redirect()->intended('/gudang');
+            }
 
-            return redirect()->intended('/dashboard');
         }
 
         echo ("<script LANGUAGE='JavaScript'>window.alert('GAGAL LOGIN. Pastikan Email dan Password sudah terdaftar');window.location.href='/login';</script>");

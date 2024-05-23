@@ -100,8 +100,8 @@ class DashboardAdminController extends Controller
                 $validatedData['stnk'] = 'STNK_'.$filename2;
     
     
-                $file->storeAs('sim/','SIM_' . $filename);
-                $file2->storeAs('stnk/','STNK_' . $filename2);
+                $file->storeAs('public/sim/','SIM_' . $filename);
+                $file2->storeAs('public/stnk/','STNK_' . $filename2);
     
     
                 $upload = DB::table('users')->insert($validatedData);

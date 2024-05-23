@@ -24,6 +24,14 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
+
+        //DESKRIPSI ROLE
+        // 1. Admin
+        // 2. User
+        // 3. Driver
+        // 4. Gudang
+
+
         DB::table('users')->insert([
             'name' => 'Ihtiandiko Wicaksono',
             'email' => 'wihtiandiko@gmail.com',
@@ -45,6 +53,19 @@ class DatabaseSeeder extends Seeder
             'alamat' =>  'Rumah',
             'tgl_lahir' =>  date('Y-m-d'),
             'role' => 2,
+            'is_active' => 1,
+            'created_at' => date('Y-m-d H:i:s'),
+            'updated_at' => date('Y-m-d H:i:s')
+        ]);
+
+        DB::table('users')->insert([
+            'name' => 'Hapis Londata',
+            'email' => 'hapis@gmail.com',
+            'password' => Hash::make('12345'),
+            'phone_number' =>  '082377102513',
+            'alamat' =>  'Rumah',
+            'tgl_lahir' =>  date('Y-m-d'),
+            'role' => 4,
             'is_active' => 1,
             'created_at' => date('Y-m-d H:i:s'),
             'updated_at' => date('Y-m-d H:i:s')
