@@ -90,6 +90,15 @@ class MainController extends Controller
         return redirect('/');
     }
 
+    public function katalog(){
+        $katalog = DB::table('products')->where('is_deleted', 0)->get();
+        // var_dump($katalog); die;
+        return view('main.katalog',[
+            'active' => 'Katalog',
+            'products' => $katalog
+        ]);
+    }
+
     public function debug(){
         dump(session()->all());
     }

@@ -43,19 +43,19 @@
                             </div>
 
                             <div class="col-md-6">
-                                <label for="harga_per_ikat" class="form-label">Harga Per Ikat (Boleh Kosong)</label>
+                                <label for="harga_per_ikat" class="form-label">Harga Per Ikat (Pilih salah satu)</label>
                                 <input type="number" class="form-control" name="harga_per_ikat" id="harga_per_ikat">
                             </div>
                             <div class="col-md-6">
-                                <label for="harga_per_kg" class="form-label">Harga Per Kilogram (Boleh Kosong)</label>
+                                <label for="harga_per_kg" class="form-label">Harga Per Kilogram (Pilih salah satu)</label>
                                 <input type="number" class="form-control" name="harga_per_kg" id="harga_per_kg">
                             </div>
                             <div class="col-md-6">
-                                <label for="harga_per_ons" class="form-label">Harga Per Ons (Boleh Kosong)</label>
+                                <label for="harga_per_ons" class="form-label">Harga Per Ons (Pilih salah satu)</label>
                                 <input type="number" class="form-control" name="harga_per_ons" id="harga_per_ons">
                             </div>
                             <div class="col-md-6">
-                                <label for="harga_per_biji" class="form-label">Harga Per Biji (Boleh Kosong)</label>
+                                <label for="harga_per_biji" class="form-label">Harga Per Biji (Pilih salah satu)</label>
                                 <input type="number" class="form-control" name="harga_per_biji" id="harga_per_biji">
                             </div>
 

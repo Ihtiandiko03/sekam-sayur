@@ -73,22 +73,22 @@
                 </div>
                 <div class="zoom play-on-scroll delay-2">
                     <button data-food-type="salad">
-                        Salad
+                        Sayuran
                     </button>
                 </div>
                 <div class="zoom play-on-scroll delay-4">
                     <button data-food-type="lorem">
-                        Lorem
+                        Buah-buahan
                     </button>
                 </div>
                 <div class="zoom play-on-scroll delay-6">
                     <button data-food-type="ipsum">
-                        Ipsum
+                        Bumbu Dapur
                     </button>
                 </div>
                 <div class="zoom play-on-scroll delay-8">
                     <button data-food-type="dolor">
-                        Dolor
+                        Lainnya
                     </button>
                 </div>
             </div>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DashboardGudangController;
+use App\Http\Controllers\DashboardUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Middleware\Authenticate;
@@ -13,6 +14,7 @@ Route::post('/daftarakun', [MainController::class, 'daftarakun']);
 Route::post('/loginakun', [MainController::class, 'loginakun']);
 Route::post('/logout', [MainController::class, 'logout'])->name('logout');
 Route::get('/debug', [MainController::class, 'debug']);
+Route::get('/katalog', [MainController::class, 'katalog']);
 
 Route::middleware(Authenticate::class)->group(function () {
     Route::get('/dashboard', [DashboardAdminController::class, 'index']);
@@ -33,7 +35,12 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::get('/gudang/product/editproduct/{id}', [DashboardGudangController::class, 'editproduct']);
     Route::put('/gudang/product/simpaneditproduct', [DashboardGudangController::class, 'simpaneditproduct']);
     Route::delete('/gudang/product/hapusproduct/{id}', [DashboardGudangController::class, 'hapusproduct']);
-
+    
+    Route::post('/katalog/checkout', [DashboardUserController::class, 'checkout']);
+    Route::get('/katalog/checkout', [DashboardUserController::class, 'checkout']);
+    Route::get('/katalog/isiform', [DashboardUserController::class, 'isiform']);
+    
+    Route::get('/invoice/{id}', [DashboardUserController::class, 'invoice']);
 
 
 
