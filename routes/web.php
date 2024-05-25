@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\DashboardDriverController;
 use App\Http\Controllers\DashboardGudangController;
 use App\Http\Controllers\DashboardUserController;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,8 @@ Route::post('/loginakun', [MainController::class, 'loginakun']);
 Route::post('/logout', [MainController::class, 'logout'])->name('logout');
 Route::get('/debug', [MainController::class, 'debug']);
 Route::get('/katalog', [MainController::class, 'katalog']);
+Route::get('/riwayat', [MainController::class, 'riwayat']);
+Route::get('/riwayat/lihatpesanan/{id}', [MainController::class, 'lihatpesanan']);
 
 Route::middleware(Authenticate::class)->group(function () {
     Route::get('/dashboard', [DashboardAdminController::class, 'index']);
@@ -26,6 +29,15 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::get('/dashboard/driver/editgudang/{id}', [DashboardAdminController::class, 'editgudang']);
     Route::put('/dashboard/driver/simpanubahgudang', [DashboardAdminController::class, 'simpanubahgudang']);
     Route::delete('/dashboard/driver/hapusdriver/{id}', [DashboardAdminController::class, 'hapusdriver']);
+    Route::get('/dashboard/pesanan', [DashboardAdminController::class, 'pesanan']);
+    Route::get('/dashboard/pesanan/lihatpesanan/{id}', [DashboardAdminController::class, 'lihatpesanan']);
+    Route::post('/dashboard/pesanan/pilihdriver', [DashboardAdminController::class, 'pilihdriver']);
+    
+    
+    Route::get('/driver', [DashboardDriverController::class, 'index']);
+    Route::get('/driver/lihatpengiriman/{id}', [DashboardDriverController::class, 'lihatpengiriman']);
+    Route::put('/driver/konfirmasipenjemputan', [DashboardDriverController::class, 'konfirmasipenjemputan']);
+    Route::put('/driver/konfirmasipenerimaanbarang', [DashboardDriverController::class, 'konfirmasipenerimaanbarang']);
 
     Route::get('/gudang', [DashboardGudangController::class, 'index']);
     Route::get('/gudang/product', [DashboardGudangController::class, 'product']);
@@ -35,6 +47,9 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::get('/gudang/product/editproduct/{id}', [DashboardGudangController::class, 'editproduct']);
     Route::put('/gudang/product/simpaneditproduct', [DashboardGudangController::class, 'simpaneditproduct']);
     Route::delete('/gudang/product/hapusproduct/{id}', [DashboardGudangController::class, 'hapusproduct']);
+    Route::get('/gudang/pesanan', [DashboardGudangController::class, 'pesanan']);
+    Route::get('/gudang/pesanan/lihatpesanan/{id}', [DashboardGudangController::class, 'lihatpesanan']);
+    Route::get('/gudang/pesanan/konfirmasipesanan/{id}', [DashboardGudangController::class, 'konfirmasipesanan']);
     
     Route::post('/katalog/checkout', [DashboardUserController::class, 'checkout']);
     Route::get('/katalog/checkout', [DashboardUserController::class, 'checkout']);

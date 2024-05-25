@@ -1,6 +1,6 @@
 @extends('layouts.index')
 @section('container')
-    <section id="home" class="fullheight align-items-center bg-img bg-img-fixed"
+    <section id="home" class=" align-items-center bg-img bg-img-fixed"
     style="background-image: url({{ asset('assets/img/ff2.jpg') }});">
     <div class="container">
         <div class="row">
@@ -27,6 +27,20 @@
                             <input type="text" class="form-control form-control-lg" name="phone_number" onkeypress="validateInput(event)" id="phone_number" placeholder="082377102513">
                             <label for="phone_number">Nomor Telepon</label>
                           </div>
+                          <div class="form-floating mb-3">
+                            <select name="daop" id="daop" class="form-control form-control-lg">
+                                <option value="">Pilih Kecamatan</option>
+                                @foreach ($kecamatan as $k)
+                                    <option value="{{$k->nama_kecamatan}}">{{$k->nama_kecamatan}}</option>
+                                @endforeach
+                            </select>
+                            <label for="daop">Kecamatan</label>
+                          </div>
+                          <div class="form-floating mb-3">
+                            <textarea name="alamat" id="alamat" class="form-control form-control-lg"></textarea>
+                            <label for="alamat">Alamat</label>
+                          </div>
+                          
 
                           <p class="mt-2">Sudah punya akun? <a href="/login" class="text-success">Klik disini</a> untuk login </p>
                           <button type="submit" class="btn btn-success">Daftar</button>

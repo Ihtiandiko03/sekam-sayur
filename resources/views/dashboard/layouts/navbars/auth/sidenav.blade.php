@@ -26,7 +26,7 @@
                 <div class="ps-4">
                     <i class="fab fa-laravel" style="color: #f4645f;"></i>
                 </div>
-                <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">User Management</h6>
+                <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Admin</h6>
             </li>
             <li class="nav-item">
                 <a @if($link == "Driver") class="nav-link active" @else class="nav-link" @endif href="/dashboard/akundriver">
@@ -37,6 +37,14 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a @if($link == "Pesanan") class="nav-link active" @else class="nav-link" @endif href="/dashboard/pesanan">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-basket text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Pesanan</span>
+                </a>
+            </li>
+            {{-- <li class="nav-item">
                 <a class="nav-link " href="">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
@@ -113,6 +121,36 @@
                     </div>
                     <span class="nav-link-text ms-1">Sign Up</span>
                 </a>
+            </li> --}}
+            @elseif ((auth()->user()->role) == 2)
+            <li class="nav-item mt-3 d-flex align-items-center">
+                <div class="ps-4">
+                    <i class="fab fa-codepen" style="color: #f4645f;"></i>
+                </div>
+                <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">User</h6>
+            </li>
+            <li class="nav-item">
+                <a @if($link == "Riwayat") class="nav-link active" @else class="nav-link" @endif href="/riwayat">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-bag-17 text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Riwayat</span>
+                </a>
+            </li>
+            @elseif ((auth()->user()->role) == 3)
+            <li class="nav-item mt-3 d-flex align-items-center">
+                <div class="ps-4">
+                    <i class="fab fa-codepen" style="color: #f4645f;"></i>
+                </div>
+                <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Driver</h6>
+            </li>
+            <li class="nav-item">
+                <a @if($link == "Pengiriman") class="nav-link active" @else class="nav-link" @endif href="/driver">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-bag-17 text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Pengiriman</span>
+                </a>
             </li>
             @elseif ((auth()->user()->role) == 4)
             <li class="nav-item mt-3 d-flex align-items-center">
@@ -130,11 +168,11 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a @if($link == "Pemesanan") class="nav-link active" @else class="nav-link" @endif href="/gudang/pemesanan">
+                <a @if($link == "Pesanan") class="nav-link active" @else class="nav-link" @endif href="/gudang/pesanan">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-basket text-dark text-sm opacity-10"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Pemesanan</span>
+                    <span class="nav-link-text ms-1">Pesanan</span>
                 </a>
             </li>
             @endif

@@ -180,4 +180,44 @@ class DashboardAdminController extends Controller
             echo ("<script LANGUAGE='JavaScript'>window.alert('Data Berhasil Diubah');window.location.href='/dashboard/akundriver';</script>");
         }
     }
+
+    public function pesanan(){
+        $data = DB::select("SELECT distinct(pemesanan.nomor_resi),tracking.status, tracking.paid_stat FROM pemesanan JOIN tracking ON tracking.nomor_resi = pemesanan.nomor_resi WHERE tracking.paid_stat = 'Paid'");
+        
+        return view('dashboard.pages.adminpesanan', [
+            'link' => 'Pesanan',
+            'pesanan' => $data
+        ]);
+    }
+
+    public function lihatpesanan($id){
+        $data = DB::select("SELECT pemesanan.*, products.* FROM pemesanan JOIN products ON pemesanan.id_produk = products.id  where pemesanan.nomor_resi = '$id'");
+        $getDriver = DB::table('users')->where('role', 3)->get();
+
+
+        return view('dashboard.pages.lihatpesanan', [
+            'link' => 'Pesanan',
+            'pesanan' => $data,
+            'drivers' => $getDriver
+        ]);
+    }
+
+    public function pilihdriver(Request $request){
+        // var_dump($_POST); die;
+
+
+        $validatedData = [
+            'nama_driver' => $request->nama_driver,
+            'status' => 'Menunggu Driver mengirim barang',
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+
+        $update = DB::table('tracking')
+              ->where('nomor_resi', $request->nomor_resi)
+              ->update($validatedData);
+
+        if($update){
+            echo ("<script LANGUAGE='JavaScript'>window.alert('Driver Berhasil Dipilih');window.location.href='/dashboard/pesanan';</script>");
+        }
+    }
 }

@@ -116,7 +116,7 @@ class DashboardUserController extends Controller
                 'nama_pemesan' => auth()->user()->name,
                 'alamat_pemesan' => auth()->user()->alamat,
                 'nomor_telepon' => auth()->user()->phone_number,
-                'kecamatan' => 'Metro Timur',
+                'kecamatan' => auth()->user()->daop,
                 'kota' => 'Kota Metro',
                 'id_produk' => $d['id'],
                 'nama_produk' => $d['nama_produk'],

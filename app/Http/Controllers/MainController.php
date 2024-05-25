@@ -22,8 +22,10 @@ class MainController extends Controller
     }
 
     public function register(){
+        $kecamatan = DB::table('kecamatan')->get();
         return view('main.register', [
-            'active' => 'Register'
+            'active' => 'Register',
+            'kecamatan' => $kecamatan
         ]);
     }
 
@@ -33,6 +35,8 @@ class MainController extends Controller
             'email' => 'required',
             'password' => 'required',
             'phone_number' => 'required',
+            'daop' => 'required',
+            'alamat' => 'required',
         ]);
 
         $validatedData['password'] = Hash::make($validatedData['password']);
@@ -48,7 +52,7 @@ class MainController extends Controller
 
 
         DB::table('users')->insert($validatedData);
-        return redirect('/login')->with('alert', 'Pendaftar akun berhasil, Silahkan login');
+        echo ("<script LANGUAGE='JavaScript'>window.alert('Pendaftar akun berhasil, Silahkan login');window.location.href='/login';</script>");
     }
 
     public function loginakun(Request $request){
@@ -59,24 +63,33 @@ class MainController extends Controller
 
         $kueri = "SELECT `is_active`,  `role` FROM `users` WHERE `email` = '".$credentials['email']."'";
         $getData = DB::select($kueri);
-        $aktif = $getData[0]->is_active;
-        $role = $getData[0]->role;
-
-        // var_dump($role); die;
-
-        if (Auth::attempt($credentials) && $aktif == 1) {
-            $request->session()->regenerate();
-            if ($role == 1) {
-                return redirect()->intended('/dashboard');
+        if($getData){
+            $aktif = $getData[0]->is_active;
+            $role = $getData[0]->role;
+    
+            // var_dump($role); die;
+    
+            if (Auth::attempt($credentials) && $aktif == 1) {
+                $request->session()->regenerate();
+                if ($role == 1) {
+                    return redirect()->intended('/dashboard');
+                }
+                else if($role == 2){
+                    return redirect()->intended('/');
+                }
+                else if($role == 3){
+                    return redirect()->intended('/driver');
+                }
+                else if($role == 4){
+                    return redirect()->intended('/gudang');
+                }
+    
             }
-            else if($role == 2){
-                return redirect()->intended('/');
+            else{
+                echo ("<script LANGUAGE='JavaScript'>window.alert('GAGAL LOGIN. Pastikan Email dan Password sudah benar');window.location.href='/login';</script>");
             }
-            else if($role == 4){
-                return redirect()->intended('/gudang');
-            }
-
         }
+        
 
         echo ("<script LANGUAGE='JavaScript'>window.alert('GAGAL LOGIN. Pastikan Email dan Password sudah terdaftar');window.location.href='/login';</script>");
     }
@@ -101,5 +114,27 @@ class MainController extends Controller
 
     public function debug(){
         dump(session()->all());
+    }
+
+    public function riwayat(){
+        $id = auth()->user()->id;
+        $data = DB::select("SELECT distinct(pemesanan.nomor_resi),tracking.status, tracking.paid_stat FROM pemesanan JOIN tracking ON tracking.nomor_resi = pemesanan.nomor_resi WHERE tracking.paid_stat = 'Paid' AND pemesanan.id_pemesan = $id");
+        
+        return view('dashboard.pages.pesanan', [
+            'link' => 'Riwayat',
+            'pesanan' => $data
+        ]);
+    }
+
+    public function lihatpesanan($id){
+        $data = DB::select("SELECT pemesanan.*, products.* FROM pemesanan JOIN products ON pemesanan.id_produk = products.id  where pemesanan.nomor_resi = '$id'");
+        $tracking = DB::table('tracking')->where('nomor_resi', $id)->get();
+
+
+        return view('dashboard.pages.lihatpesanan', [
+            'link' => 'Pesanan',
+            'pesanan' => $data,
+            'tracking' => $tracking[0]
+        ]);
     }
 }

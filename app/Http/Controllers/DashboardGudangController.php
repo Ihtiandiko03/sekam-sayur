@@ -137,4 +137,44 @@ class DashboardGudangController extends Controller
     }
 
 
+    public function pesanan(){
+        // $data = DB::table('pemesanan')->groupBy('nomor_resi')->get();
+        $data = DB::select("SELECT distinct(pemesanan.nomor_resi),tracking.status, tracking.paid_stat FROM pemesanan JOIN tracking ON tracking.nomor_resi = pemesanan.nomor_resi WHERE tracking.paid_stat = 'Paid'");
+        
+        return view('dashboard.pages.pesanan', [
+            'link' => 'Pesanan',
+            'pesanan' => $data
+        ]);
+
+        // var_dump($data); die;
+    }
+
+    public function lihatpesanan($id){
+        // $data = DB::table('pemesanan')->where('nomor_resi', $id)->get();
+
+        $data = DB::select("SELECT pemesanan.*, products.* FROM pemesanan JOIN products ON pemesanan.id_produk = products.id  where pemesanan.nomor_resi = '$id'");
+
+
+        return view('dashboard.pages.lihatpesanan', [
+            'link' => 'Pesanan',
+            'pesanan' => $data
+        ]);
+        // var_dump($data); die;
+    }
+
+    public function konfirmasipesanan($id){
+        $validatedData = [
+            'status' => 'Pesanan Siap Diantarkan. Menunggu Konfirmasi Admin',
+            'updated_at' => date('Y-m-d H:i:s')
+        ];
+
+        $update = DB::table('tracking')
+          ->where('nomor_resi', $id)
+          ->update($validatedData);
+        if($update){
+            echo ("<script LANGUAGE='JavaScript'>window.alert('Pesanan Berhasil Disimpan');window.location.href='/gudang/pesanan';</script>");
+        }
+    }
+
+
 }

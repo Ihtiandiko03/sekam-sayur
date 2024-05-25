@@ -8,19 +8,19 @@
                 <div class="card mb-4">
                     <div class="card-header pb-0">
                         <a href="/dashboard/driver/tambahdriver" class="btn btn-primary">Tambah Akun</a>
-                        <h4>Driver</h4>
+                        <h4 class="text-center">Driver</h4>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xs font-weight-bolder">
+                                        <th class="text-uppercase text-center text-secondary text-xs font-weight-bolder">
                                             Nama</th>
-                                        <th class="text-uppercase text-secondary text-xs font-weight-bolder ps-2">
+                                        <th class="text-uppercase text-center text-secondary text-xs font-weight-bolder ps-2">
                                             Nomor Telepon</th>
                                         <th
-                                            class="text-center text-uppercase text-secondary text-xs font-weight-bolder">
+                                            class="text-center text-uppercase text-center text-secondary text-xs font-weight-bolder">
                                             Daerah Operasional</th>
                                         
                                         <th class="text-secondary"></th>
@@ -29,17 +29,17 @@
                                 <tbody>
                                     @foreach ($drivers as $d)
                                     <tr>
-                                        <td>
+                                        <td class="text-center">
                                             <p class="font-weight-bold">{{$d->name}}</p>
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <p>{{$d->phone_number}}</p>
                                         </td>
                                         <td class="align-middle text-center text-sm">
                                             <span class="badge badge-sm bg-gradient-success">{{$d->daop}}</span>
                                         </td>
                                         
-                                        <td class="align-middle">
+                                        <td class="align-middle text-center">
                                             <a href="/dashboard/driver/editdriver/{{$d->id}}" class="btn btn-secondary "
                                                 data-toggle="tooltip" data-original-title="Edit user">
                                                 Edit
@@ -65,16 +65,16 @@
             <div class="col-12">
                 <div class="card mb-4">
                     <div class="card-header pb-0">
-                        <h4>Gudang</h4>
+                        <h4 class="text-center">Gudang</h4>
                     </div>
                     <div class="card-body px-0 pt-0 pb-2">
                         <div class="table-responsive p-0">
                             <table class="table align-items-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th class="text-uppercase text-secondary text-xs font-weight-bolder">
+                                        <th class="text-uppercase text-center text-secondary text-xs font-weight-bolder">
                                             Nama</th>
-                                        <th class="text-uppercase text-secondary text-xs font-weight-bolder ps-2">
+                                        <th class="text-uppercase text-center text-secondary text-xs font-weight-bolder ps-2">
                                             Nomor Telepon</th>
                                         
                                         <th class="text-secondary"></th>
@@ -83,14 +83,14 @@
                                 <tbody>
                                     @foreach ($gudang as $d)
                                     <tr>
-                                        <td>
+                                        <td class="text-center">
                                             <p class="font-weight-bold">{{$d->name}}</p>
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <p>{{$d->phone_number}}</p>
                                         </td>
                                         
-                                        <td class="align-middle">
+                                        <td class="align-middle text-center">
                                             <a href="/dashboard/driver/editgudang/{{$d->id}}" class="btn btn-secondary "
                                                 data-toggle="tooltip" data-original-title="Edit user">
                                                 Edit

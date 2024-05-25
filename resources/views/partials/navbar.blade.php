@@ -120,16 +120,23 @@
                     Katalog
                 </div>
             </a>
+            @if (auth()->user())
+            <a href="/riwayat">
+                <div class="menu-item {{ ($active === "Riwayat") ? 'active' : '' }}">
+                    Riwayat
+                </div>
+            </a>
+            @endif
             {{-- <a href="#about">
                 <div class="menu-item">
                     About
                 </div>
             </a> --}}
-            <a href="#food-menu-section">
+            {{-- <a href="#food-menu-section">
                 <div class="menu-item">
                     Menu
                 </div>
-            </a>
+            </a> --}}
             {{-- <a href="#testimonial">
                 <div class="menu-item">
                     Testimonials
