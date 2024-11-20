@@ -10,14 +10,14 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Money</p>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pesanan Masuk</p>
                                     <h5 class="font-weight-bolder">
-                                        $53,000
+                                        <?=$pesananMasuk[0]->total_pesanan?>
                                     </h5>
-                                    <p class="mb-0">
+                                    {{-- <p class="mb-0">
                                         <span class="text-success text-sm font-weight-bolder">+55%</span>
                                         since yesterday
-                                    </p>
+                                    </p> --}}
                                 </div>
                             </div>
                             <div class="col-4 text-end">
@@ -35,14 +35,14 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Today's Users</p>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pesanan Proses</p>
                                     <h5 class="font-weight-bolder">
-                                        2,300
+                                        <?=$pesananProses[0]->total_pesanan?>
                                     </h5>
-                                    <p class="mb-0">
+                                    {{-- <p class="mb-0">
                                         <span class="text-success text-sm font-weight-bolder">+3%</span>
                                         since last week
-                                    </p>
+                                    </p> --}}
                                 </div>
                             </div>
                             <div class="col-4 text-end">
@@ -60,14 +60,14 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">New Clients</p>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Pesanan Selesai</p>
                                     <h5 class="font-weight-bolder">
-                                        +3,462
+                                        <?=$pesananSelesai[0]->total_pesanan?>
                                     </h5>
-                                    <p class="mb-0">
+                                    {{-- <p class="mb-0">
                                         <span class="text-danger text-sm font-weight-bolder">-2%</span>
                                         since last quarter
-                                    </p>
+                                    </p> --}}
                                 </div>
                             </div>
                             <div class="col-4 text-end">
@@ -85,13 +85,13 @@
                         <div class="row">
                             <div class="col-8">
                                 <div class="numbers">
-                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Sales</p>
+                                    <p class="text-sm mb-0 text-uppercase font-weight-bold">Total Pesanan</p>
                                     <h5 class="font-weight-bolder">
-                                        $103,430
+                                        <?=$pesananTotal[0]->total_pesanan?>
                                     </h5>
-                                    <p class="mb-0">
+                                    {{-- <p class="mb-0">
                                         <span class="text-success text-sm font-weight-bolder">+5%</span> than last month
-                                    </p>
+                                    </p> --}}
                                 </div>
                             </div>
                             <div class="col-4 text-end">
@@ -104,7 +104,7 @@
                 </div>
             </div>
         </div>
-        <div class="row mt-4">
+        {{-- <div class="row mt-4">
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card z-index-2 h-100">
                     <div class="card-header pb-0 pt-3 bg-transparent">
@@ -170,8 +170,8 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row mt-4">
+        </div> --}}
+        {{-- <div class="row mt-4">
             <div class="col-lg-7 mb-lg-0 mb-4">
                 <div class="card ">
                     <div class="card-header pb-0 p-3">
@@ -389,12 +389,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         @include('dashboard.layouts.footers.auth.footer')
     </div>
 @endsection
 
-@push('js')
+{{-- @push('js')
     <script src="{!! asset('argon/assets/js/plugins/chartjs.min.js') !!}"></script>
     <script>
         var ctx1 = document.getElementById("chart-line").getContext("2d");
@@ -479,4 +479,4 @@
             },
         });
     </script>
-@endpush
+@endpush --}}

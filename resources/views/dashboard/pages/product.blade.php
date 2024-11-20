@@ -30,9 +30,10 @@
                               </tr>
                             </thead>
                             <tbody>
+                                <?php  $i = 1; ?>
                               @foreach ($products as $p)
                               <tr class="text-center">
-                                <th scope="row">1</th>
+                                <th scope="row"><?=$i++?></th>
                                 <td>{{ $p->nama_produk }}</td>
                                 <td>{{ $p->tipe }}</td>
                                 <td>{{ $p->jumlah_stok }}</td>

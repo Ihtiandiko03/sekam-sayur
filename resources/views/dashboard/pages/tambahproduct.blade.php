@@ -24,6 +24,8 @@
                                 <option value="Sayuran">Sayuran</option>
                                 <option value="Buah">Buah-Buahan</option>
                                 <option value="Bumbu Masak">Bumbu Masak</option>
+                                <option value="Bahan Pokok">Bahan Pokok</option>
+                                <option value="Lauk Pauk">Lauk Pauk</option>
                               </select>
                             </div>
                             

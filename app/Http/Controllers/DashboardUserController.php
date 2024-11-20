@@ -128,6 +128,7 @@ class DashboardUserController extends Controller
             ];
 
             $total += $validatedData['harga'];
+            $total += 3000; //ONGKIR SELURUH METRO
 
             DB::table('pemesanan')->insert($validatedData);
         }

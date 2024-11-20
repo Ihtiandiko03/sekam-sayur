@@ -10,8 +10,11 @@ use Illuminate\Support\Facades\Auth;
 class MainController extends Controller
 {
     public function index(){
+        $katalog = DB::table('products')->where('is_deleted', 0)->limit(8)->get();
+
         return view('main.index',[
-            'active' => 'Home'
+            'active' => 'Home',
+            'products' => $katalog
         ]);
     }
 

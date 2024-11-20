@@ -9,8 +9,38 @@ use Illuminate\Support\Str;
 class DashboardGudangController extends Controller
 {
     public function index(){
+        $pesananMasuk = DB::select("SELECT COUNT(DISTINCT pemesanan.nomor_resi) AS total_pesanan
+        FROM pemesanan
+        JOIN tracking ON tracking.nomor_resi = pemesanan.nomor_resi
+        WHERE tracking.paid_stat = 'Paid'
+        AND tracking.status = 'Pesanan berhasil Dibuat'");
+
+        $pesananSelesai = DB::select("SELECT COUNT(DISTINCT pemesanan.nomor_resi) AS total_pesanan
+        FROM pemesanan
+        JOIN tracking ON tracking.nomor_resi = pemesanan.nomor_resi
+        WHERE tracking.paid_stat = 'Paid'
+        AND tracking.status = 'Barang Sudah Diterima'");
+        
+        $pesananProses = DB::select("SELECT COUNT(DISTINCT pemesanan.nomor_resi) AS total_pesanan
+        FROM pemesanan
+        JOIN tracking ON tracking.nomor_resi = pemesanan.nomor_resi
+        WHERE tracking.paid_stat = 'Paid'
+        AND (tracking.status != 'Pesanan berhasil Dibuat' AND tracking.status != 'Barang Sudah Diterima')");
+        
+        $pesananTotal = DB::select("SELECT COUNT(DISTINCT pemesanan.nomor_resi) AS total_pesanan
+        FROM pemesanan
+        JOIN tracking ON tracking.nomor_resi = pemesanan.nomor_resi
+        WHERE tracking.paid_stat = 'Paid'");
+
+        // var_dump($pesananTotal); die;
+
+
         return view('dashboard.pages.dashboard', [
-            'link' => 'Dashboard'
+            'link' => 'Dashboard',
+            'pesananMasuk' => $pesananMasuk,
+            'pesananSelesai' => $pesananSelesai,
+            'pesananProses' => $pesananProses,
+            'pesananTotal' => $pesananTotal
         ]);
     }
 
@@ -139,7 +169,15 @@ class DashboardGudangController extends Controller
 
     public function pesanan(){
         // $data = DB::table('pemesanan')->groupBy('nomor_resi')->get();
-        $data = DB::select("SELECT distinct(pemesanan.nomor_resi),tracking.status, tracking.paid_stat FROM pemesanan JOIN tracking ON tracking.nomor_resi = pemesanan.nomor_resi WHERE tracking.paid_stat = 'Paid'");
+        $data = DB::select("SELECT pemesanan.nomor_resi, 
+                                tracking.status, 
+                                tracking.paid_stat,
+                                MAX(pemesanan.id) AS id
+                            FROM pemesanan
+                            JOIN tracking ON tracking.nomor_resi = pemesanan.nomor_resi
+                            WHERE tracking.paid_stat = 'Paid'
+                            GROUP BY pemesanan.nomor_resi, tracking.status, tracking.paid_stat
+                            ORDER BY id DESC");
         
         return view('dashboard.pages.pesanan', [
             'link' => 'Pesanan',

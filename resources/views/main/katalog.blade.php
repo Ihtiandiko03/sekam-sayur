@@ -2,8 +2,8 @@
 @section('container')
 <section class="align-items-center bg-img bg-img-fixed" id="food-menu-section"
 style="background-image: url({{ asset('assets/assets/katherine-chase-4MMK78S7eyk-unsplash.jpg') }});">
-<div class="container">
-    <div class="food-menu">
+<div class="container" >
+    <div class="food-menu" style="padding-bottom: 200px;">
         <h1>
             What will <span class="primary-color">you</span> eat today?
         </h1>
@@ -12,41 +12,40 @@ style="background-image: url({{ asset('assets/assets/katherine-chase-4MMK78S7eyk
             praesentium dicta ex dolorum inventore itaque minus repudiandae, odio provident? Velit architecto
             natus expedita non? Odio, dolorum.
         </p>
-        <div class="food-category">
-            {{-- <div class="zoom play-on-scroll">
-                <button class="active" data-food-type="all">
-                    All food
-                </button>
-            </div>
-            <div class="zoom play-on-scroll delay-2">
-                <button data-food-type="salad">
-                    Sayuran
-                </button>
-            </div>
-            <div class="zoom play-on-scroll delay-4">
-                <button data-food-type="lorem">
-                    Buah-buahan
-                </button>
-            </div>
-            <div class="zoom play-on-scroll delay-6">
-                <button data-food-type="ipsum">
-                    Bumbu Dapur
-                </button>
-            </div>
-            <div class="zoom play-on-scroll delay-8">
-                <button data-food-type="dolor">
-                    Lainnya
-                </button>
-            </div> --}}
-        </div>
 
-        <div class="food-item-wrap all">
+        <style>
+            .food-item-wrap {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr); 
+                gap: 20px;
 
+            }
+
+            .food-item {
+                /* background-color: #fff; */
+                padding: 10px;
+                border-radius: 5px;
+                width: 300px;
+            }
+
+            @media (max-width: 768px) {
+                .food-item-wrap {
+                    grid-template-columns: repeat(2, 1fr); 
+                }
+            }
+
+            @media (max-width: 480px) {
+                .food-item-wrap {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+        </style>
+        <div class="food-item-wrap">
             @foreach ($products as $p)
             <form method="post" action="/katalog/checkout?action=add&code={{ $p->id }}" class="col-12">
-
                 @csrf 
-                <div class="food-item lorem-type">
+                <div class="food-item">
                     <div class="item-wrap bottom-up play-on-scroll">
                         <div class="item-img">
                             <div class="img-holder bg-img"
@@ -54,9 +53,7 @@ style="background-image: url({{ asset('assets/assets/katherine-chase-4MMK78S7eyk
                         </div>
                         <div class="item-info">
                             <div>
-                                <h3>
-                                    {{ $p->nama_produk }}
-                                </h3>
+                                <h3>{{ $p->nama_produk }}</h3>
                                 <span>
                                     @if ($p->harga_per_biji != 0)
                                         Rp.{{ number_format($p->harga_per_biji ,2,",",".") }} per Biji
@@ -86,20 +83,13 @@ style="background-image: url({{ asset('assets/assets/katherine-chase-4MMK78S7eyk
                                 </div>
                                 @endif
                             </div>
-
-                            {{-- <div class="cart-btn">
-                                <i class='bx bx-cart-alt'></i>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
             </form>
-
             @endforeach
-
-
-            
         </div>
+        
     </div>
 </div>
 </section>

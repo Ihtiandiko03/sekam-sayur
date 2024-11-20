@@ -12,13 +12,15 @@
                         MetroSayur
                     </h1>
                     <p class="left-to-right play-on-scroll delay-2">
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quae eveniet ullam perferendis
-                        eos, nobis corrupti similique fuga ipsa minus at eius ipsam expedita quam aliquam
-                        perspiciatis voluptate qui dolore soluta.
+                        Metro Sayur hadir untuk membantu kalian untuk belanja cukup dari rumah. Tidak perlu repot - repot kepasar.
+                        Bersama Metro Sayur hidup sehat dengan sayuran yang dijamin fresh setiap harinya.
+                        Makan sehat dimulai dari sayur yang segar. Sayur segar setiap hari ya  cuman ada disini.
                     </p>
                     <div class="left-to-right play-on-scroll delay-4">
                         <button>
+                            <a href="/katalog">
                             Order now
+                            </a>
                         </button>
                     </div>
                 </div>
@@ -38,13 +40,12 @@
             <div class="col-5 col-xs-12 align-items-center">
                 <div class="about-slogan right-to-left play-on-scroll">
                     <h3>
-                        <span class="primary-color">We</span> create <span class="primary-color">delicious</span>
-                        memories for <span class="primary-color">you</span>
+                        <span class="primary-color">Kami</span> selalu <span class="primary-color">meyiapkan</span>
+                        sayuran segar untuk  <span class="primary-color">kalian</span>
                     </h3>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio natus placeat et eos,
-                        dignissimos voluptatem tempora necessitatibus doloribus! Eum qui doloribus odio dolor
-                        tenetur nihil impedit vero magni, distinctio soluta!
+                        Berbagai sayuran dan lauk pauk tersedia disini, apa yang kalian butuhkan kami ada.
+                        Tidak perlu repot - repot ke pasar cukup di Metro Sayur. Sayuran sampai ke rumah.
                     </p>
                 </div>
             </div>
@@ -58,12 +59,10 @@
     <div class="container">
         <div class="food-menu">
             <h1>
-                What will <span class="primary-color">you</span> eat today?
+                Apa yang mau  <span class="primary-color">kalian</span> masak hari ini?
             </h1>
             <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque alias aliquam eveniet, iure
-                praesentium dicta ex dolorum inventore itaque minus repudiandae, odio provident? Velit architecto
-                natus expedita non? Odio, dolorum.
+                Ada sayuran, lauk-pauk, bahan pokok dan perbumbu - bumbuan semua ada disini.
             </p>
             <div class="food-category">
                 <div class="zoom play-on-scroll">
@@ -94,29 +93,48 @@
             </div>
 
             <div class="food-item-wrap all">
-                <div class="food-item salad-type">
+
+                @foreach ($products as $p)
+                <div class="food-item">
                     <div class="item-wrap bottom-up play-on-scroll">
                         <div class="item-img">
                             <div class="img-holder bg-img"
-                                style="background-image: url({{ asset('assets/assets/anh-nguyen-kcA-c3f_3FE-unsplash.jpg') }});"></div>
+                                style="background-image: url('{{ asset('storage/product').'/'.$p->gambar }}');"></div>
                         </div>
                         <div class="item-info">
                             <div>
                                 <h3>
-                                    Lorem ipsum
+                                    <?=$p->nama_produk?>
                                 </h3>
                                 <span>
-                                    120$
+                                    @if ($p->harga_per_biji != 0)
+                                        Rp.{{ number_format($p->harga_per_biji ,2,",",".") }} per Biji
+                                        <?php $harga = $p->harga_per_biji; ?>
+                                    @elseif($p->harga_per_kg != 0)
+                                        Rp.{{ number_format($p->harga_per_kg ,2,",",".") }} per Kg
+                                        <?php $harga = $p->harga_per_kg; ?>
+                                    @elseif($p->harga_per_ons != 0)
+                                        Rp.{{ number_format($p->harga_per_ons ,2,",",".") }} per Ons
+                                        <?php $harga = $p->harga_per_ons; ?>
+                                    @elseif($p->harga_per_ikat != 0)
+                                        Rp.{{ number_format($p->harga_per_ikat ,2,",",".") }} per Ikat
+                                        <?php $harga = $p->harga_per_ikat; ?>
+                                    @endif
                                 </span>
                             </div>
                             <div class="cart-btn">
-                                <i class="bx bx-cart-alt"></i>
+                                <a href="/login">
+                                    <i class="bx bx-cart-alt"></i>
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
+                @endforeach
 
-                <div class="food-item lorem-type">
+                
+
+                {{-- <div class="food-item lorem-type">
                     <div class="item-wrap bottom-up play-on-scroll">
                         <div class="item-img">
                             <div class="img-holder bg-img"
@@ -269,7 +287,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
