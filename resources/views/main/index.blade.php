@@ -17,11 +17,13 @@
                         Makan sehat dimulai dari sayur yang segar. Sayur segar setiap hari ya  cuman ada disini.
                     </p>
                     <div class="left-to-right play-on-scroll delay-4">
+                        <a href="/login">
                         <button>
-                            <a href="/login">
+                            
                             Order now
-                            </a>
                         </button>
+                    </a>
+
                     </div>
                 </div>
             </div>
