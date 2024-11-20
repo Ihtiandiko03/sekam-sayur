@@ -18,7 +18,7 @@
                     </p>
                     <div class="left-to-right play-on-scroll delay-4">
                         <button>
-                            <a href="/katalog">
+                            <a href="/login">
                             Order now
                             </a>
                         </button>
