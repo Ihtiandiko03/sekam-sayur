@@ -59,7 +59,9 @@ class DashboardUserController extends Controller
                         // var_dump(Session::get('cart_item'));
                         // die;
                     }
+                session()->flash('success', 'Pesanan berhasil ditambahkan ke keranjang!');
                 }
+                
                 return redirect()->back();
                 break;
             case "remove":
@@ -95,15 +97,6 @@ class DashboardUserController extends Controller
     public function isiform(){
         $data = session('cart_item');
         $total = 0;
-        // var_dump($data);die;
-        // $validatedData = [];
-
-        
-
-
-
-
-
         $bulan = date("m");
         $kueri = "SELECT COUNT(id) as total FROM `tracking` WHERE MONTH(created_at)= $bulan";
         $getData = DB::select($kueri);
@@ -172,7 +165,6 @@ class DashboardUserController extends Controller
             // dd($snapToken);
 
             return view('checkout', compact('snapToken', 'data', 'total', 'upload'));
-
 
             // session()->forget('cart_item');
             // echo ("<script LANGUAGE='JavaScript'>window.alert('Pesanan Berhasil Dibuat. Cek riwayat pesanan di menu Riwayat');window.location.href='/katalog';</script>");

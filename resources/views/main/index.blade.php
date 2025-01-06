@@ -73,17 +73,17 @@
                     </button>
                 </div>
                 <div class="zoom play-on-scroll delay-2">
-                    <button data-food-type="salad">
+                    <button data-food-type="sayuran">
                         Sayuran
                     </button>
                 </div>
                 <div class="zoom play-on-scroll delay-4">
-                    <button data-food-type="lorem">
-                        Buah-buahan
+                    <button data-food-type="lauk-pauk">
+                        lauk-pauk
                     </button>
                 </div>
                 <div class="zoom play-on-scroll delay-6">
-                    <button data-food-type="ipsum">
+                    <button data-food-type="bumbu dapur">
                         Bumbu Dapur
                     </button>
                 </div>
@@ -296,7 +296,7 @@
     </section>
     <!-- END FOOD MENU SECTION -->
     <!-- TESTIMONIAL SECTION -->
-    <section id="testimonial">
+    {{-- <section id="testimonial">
     <div class="container">
         <div class="row">
             <div class="col-4 col-xs-12">
@@ -382,6 +382,6 @@
             </div>
         </div>
     </div>
-    </section>
+    </section> --}}
     <!-- END TESTIMONIAL SECTION -->
 @endsection

@@ -24,16 +24,20 @@
             <div class="row">
                 <div class="col-6 col-xs-12">
                     <h1>
-                        Freshfood
+                        Metro Sayur
                     </h1>
                     <br>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, quas harum? Atque eius
-                        quaerat fuga sint molestiae illo corrupti vitae voluptatibus. Dicta rerum est delectus
-                        perspiciatis nemo nihil autem! Doloremque?</p>
+                    <p>Merupakan website dibawah naungan Sentra Kreatif Kota Metro
+                        yang bergerak pada bidang penjualan sayuran dan makanan pokok
+                        yang bekerja sama dengan dinas perdagangan Kota Metro 
+                        Informasi dan Layanan
+                        Dapat menghubungi No Admin : 0895369032502
+                        
+                    </p>
                     <br>
                     
                 </div>
-                <div class="col-2 col-xs-12">
+                {{-- <div class="col-2 col-xs-12">
                     <h1>
                         About us
                     </h1>
@@ -59,14 +63,14 @@
                         </a>
                     </p>
                 </div>
-                <div class="col-4 col-xs-12">
-                    <h1>
-                        Subscribe & media
+                <div class="col-4 col-xs-12"> --}}
+                    {{-- <h1>
+                        Informasi dan Layanan
                     </h1>
                     <br>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Iusto aspernatur doloremque rerum nam
-                        ullam obcaecati error asperiores temporibus quo eum eaque sed odio vitae accusantium, dolorem
-                        nihil molestiae deserunt maxime!</p>
+                    <p> Dapat menghubungi No Admin :
+                        0895369032502
+                    </p> --}}
                     {{-- <div class="input-group">
                         <input type="text" placeholder="Enter your email">
                         <button>

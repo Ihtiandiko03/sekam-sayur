@@ -3,14 +3,21 @@
 <section class="align-items-center bg-img bg-img-fixed" id="food-menu-section"
 style="background-image: url({{ asset('assets/assets/katherine-chase-4MMK78S7eyk-unsplash.jpg') }});">
 <div class="container" >
+    @if (session('success'))
+    <div class="alert alert-success" style="margin: 10px 0;
+    padding: 15px;
+    border-radius: 5px;">
+        {{ session('success') }}
+    </div>
+    @endif
+
     <div class="food-menu" style="padding-bottom: 200px;">
         <h1>
-            What will <span class="primary-color">you</span> eat today?
+            Apa yang mau <span class="primary-color">kalian</span> hari ini?
         </h1>
         <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque alias aliquam eveniet, iure
-            praesentium dicta ex dolorum inventore itaque minus repudiandae, odio provident? Velit architecto
-            natus expedita non? Odio, dolorum.
+            Berbagai sayuran, lauk-pauk, bahan pokok dan perbumbuan semua ada disini.
+            Silakan masukan jumlah yang akan kalian beli, jangan lupa di klil tombol keranjangnya ya.
         </p>
 
         <style>
