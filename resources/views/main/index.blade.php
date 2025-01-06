@@ -17,12 +17,21 @@
                         Makan sehat dimulai dari sayur yang segar. Sayur segar setiap hari ya  cuman ada disini.
                     </p>
                     <div class="left-to-right play-on-scroll delay-4">
+                        @if (auth()->user())
+                        <a href="/katalog">
+                            <button>
+                                Pesan Disini
+                            </button>
+                        </a>
+                        @else
                         <a href="/login">
-                        <button>
-                            
-                            Order now
-                        </button>
-                    </a>
+                            <button>
+                                Pesan Disini
+                            </button>
+                        </a>
+                        @endif
+
+                        
 
                     </div>
                 </div>
