@@ -7,6 +7,12 @@ use App\Http\Controllers\DashboardUserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Middleware\Authenticate;
+use Illuminate\Support\Facades\Artisan;
+
+
+Route::get('/foo', function () {
+    Artisan::call('storage:link');
+});
 
 Route::get('/', [MainController::class, 'index']);
 Route::get('/login', [MainController::class, 'login']);
