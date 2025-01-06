@@ -15,10 +15,38 @@
     <link href="{!! asset('argon/assets/css/nucleo-icons.css') !!}" rel="stylesheet" />
     <link href="{!! asset('argon/assets/css/nucleo-svg.css') !!}" rel="stylesheet" />
     <!-- Font Awesome Icons -->
-    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    {{-- <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="{!! asset('argon/assets/css/nucleo-svg.css') !!}" rel="stylesheet" />
     <!-- CSS Files -->
     <link id="pagestyle" href="{!! asset('argon/assets/css/argon-dashboard.css') !!}" rel="stylesheet" />
+    
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css" rel="stylesheet" />
+    <style>
+        @media (max-width: 768px) {
+            #sidenav-main {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease-in-out;
+            }
+
+            #sidenav-main.active {
+                transform: translateX(0);
+            }
+        }
+
+        /* Menambahkan padding untuk konten utama */
+        @media (max-width: 768px) {
+            .main-content {
+                padding-left: 0;
+            }
+
+            .main-content.active {
+                padding-left: 250px; /* Sesuaikan dengan lebar sidebar */
+            }
+        }
+    </style>
 </head>
 
 <body class="{{ $class ?? '' }}">
@@ -28,10 +56,10 @@
             @yield('content')
         @else
             @if (!in_array(request()->route()->getName(), ['profile', 'profile-static']))
-                <div class="min-height-300 bg-primary position-absolute w-100"></div>
+                <div class="min-height-300 bg-success position-absolute w-100"></div>
             @elseif (in_array(request()->route()->getName(), ['profile-static', 'profile']))
                 <div class="position-absolute w-100 min-height-300 top-0" style="background-image: url('https://raw.githubusercontent.com/creativetimofficial/public-assets/master/argon-dashboard-pro/assets/img/profile-layout-header.jpg'); background-position-y: 50%;">
-                    <span class="mask bg-primary opacity-6"></span>
+                    <span class="mask bg-success opacity-6"></span>
                 </div>
             @endif
             @include('dashboard.layouts.navbars.auth.sidenav')
@@ -40,7 +68,20 @@
                 </main>
             @include('dashboard.components.fixed-plugin')
         @endif
-    
+    <script>
+        document.getElementById('iconSidenav').addEventListener('click', function () {
+            const sidenav = document.getElementById('sidenav-main');
+            sidenav.classList.toggle('d-none');
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+
+    <script>
+        new DataTable('#example');
+    </script>
 
     <!--   Core JS Files   -->
     <script src="{!! asset('argon/assets/js/core/popper.min.js') !!}"></script>

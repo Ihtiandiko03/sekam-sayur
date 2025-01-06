@@ -1,12 +1,12 @@
 <div class="fixed-plugin">
     <a class="fixed-plugin-button text-dark position-fixed px-3 py-2">
-        <i class="fa fa-cog py-2"> </i>
+        <i class="fa fa-bars py-2"></i>
     </a>
     <div class="card shadow-lg">
         <div class="card-header pb-0 pt-3 ">
             <div class="float-start">
-                <h5 class="mt-3 mb-0">Argon Configurator</h5>
-                <p>See our dashboard options.</p>
+                <h5 class="mt-3 mb-0">Menu</h5>
+                <p></p>
             </div>
             <div class="float-end mt-4">
                 <button class="btn btn-link text-dark p-0 fixed-plugin-close-button">
@@ -19,9 +19,97 @@
         <div class="card-body pt-sm-3 pt-0 overflow-auto">
             <!-- Sidebar Backgrounds -->
             <div>
-                <h6 class="mb-0">Sidebar Colors</h6>
+                {{-- <h6 class="mb-0">Sidebar Colors</h6> --}}
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a @if($link == "Dashboard") class="nav-link active" @else class="nav-link" @endif href="/dashboard">
+                            <div
+                                class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Dashboard</span>
+                        </a>
+                    </li>
+                    @if ((auth()->user()->role) == 1)
+                    <li class="nav-item mt-3 d-flex align-items-center">
+                        <div class="ps-4">
+                            <i class="fab fa-laravel" style="color: #f4645f;"></i>
+                        </div>
+                        {{-- <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Admin</h6> --}}
+                    </li>
+                    <li class="nav-item">
+                        <a @if($link == "Driver") class="nav-link active" @else class="nav-link" @endif href="/dashboard/akundriver">
+                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-bullet-list-67 text-dark text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Akun Pegawai</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a @if($link == "Pesanan") class="nav-link active" @else class="nav-link" @endif href="/dashboard/pesanan">
+                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-basket text-dark text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Pesanan</span>
+                        </a>
+                    </li>
+                    @elseif ((auth()->user()->role) == 2)
+                    <li class="nav-item mt-3 d-flex align-items-center">
+                        <div class="ps-4">
+                            <i class="fab fa-codepen" style="color: #f4645f;"></i>
+                        </div>
+                        {{-- <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">User</h6> --}}
+                    </li>
+                    <li class="nav-item">
+                        <a @if($link == "Riwayat") class="nav-link active" @else class="nav-link" @endif href="/riwayat">
+                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-bag-17 text-dark text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Riwayat</span>
+                        </a>
+                    </li>
+                    @elseif ((auth()->user()->role) == 3)
+                    <li class="nav-item mt-3 d-flex align-items-center">
+                        <div class="ps-4">
+                            <i class="fab fa-codepen" style="color: #f4645f;"></i>
+                        </div>
+                        {{-- <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Driver</h6> --}}
+                    </li>
+                    <li class="nav-item">
+                        <a @if($link == "Pengiriman") class="nav-link active" @else class="nav-link" @endif href="/driver">
+                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-bag-17 text-dark text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Pengiriman</span>
+                        </a>
+                    </li>
+                    @elseif ((auth()->user()->role) == 4)
+                    <li class="nav-item mt-3 d-flex align-items-center">
+                        <div class="ps-4">
+                            <i class="fab fa-codepen" style="color: #f4645f;"></i>
+                        </div>
+                        {{-- <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Gudang</h6> --}}
+                    </li>
+                    <li class="nav-item">
+                        <a @if($link == "Product") class="nav-link active" @else class="nav-link" @endif href="/gudang/product">
+                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-bag-17 text-dark text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Product</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a @if($link == "Pesanan") class="nav-link active" @else class="nav-link" @endif href="/gudang/pesanan">
+                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-basket text-dark text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Pesanan</span>
+                        </a>
+                    </li>
+                    @endif
+                </ul>
             </div>
-            <a href="javascript:void(0)" class="switch-trigger background-color">
+            {{-- <a href="javascript:void(0)" class="switch-trigger background-color">
                 <div class="badge-colors my-2 text-start">
                     <span class="badge filter bg-gradient-primary active" data-color="primary"
                         onclick="sidebarColor(this)"></span>
@@ -62,25 +150,8 @@
                     <input class="form-check-input mt-1 ms-auto" type="checkbox" id="dark-version"
                         onclick="darkMode(this)">
                 </div>
-            </div>
-            <a class="btn bg-gradient-dark w-100" href="https://www.creative-tim.com/product/argon-dashboard-laravel" target="_blank">Free Download</a>
-            <a class="btn btn-outline-dark w-100"
-                href="/docs/bootstrap/overview/argon-dashboard/index.html" target="_blank">View documentation</a>
-            <div class="w-100 text-center">
-                <a class="github-button" href="https://github.com/creativetimofficial/argon-dashboard-laravel"
-                    data-icon="octicon-star" data-size="large" data-show-count="true"
-                    aria-label="Star creativetimofficial/argon-dashboard on GitHub">Star</a>
-                <h6 class="mt-3">Thank you for sharing!</h6>
-                <a href="https://twitter.com/intent/tweet?text=Check%20Argon%20Dashboard%20made%20by%20%40CreativeTim%20and%20%40UPDIVISION%20%23webdesign%20%23dashboard%20%23bootstrap5&amp;url=https%3A%2F%2Fwww.creative-tim.com%2Fproduct%2Fargon-dashboard-laravel"
-                    class="btn btn-dark mb-0 me-2" target="_blank">
-                    {{-- &amp;url2=https%3A%2F%2Fwww.updivision.com --}}
-                    <i class="fab fa-twitter me-1" aria-hidden="true"></i> Tweet
-                </a>
-                <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.creative-tim.com/product/argon-dashboard-laravel"
-                    class="btn btn-dark mb-0 me-2" target="_blank">
-                    <i class="fab fa-facebook-square me-1" aria-hidden="true"></i> Share
-                </a>
-            </div>
+            </div> --}}
+            
         </div>
     </div>
 </div>
