@@ -4,28 +4,49 @@
 ?>
 
 <!-- MOBILE NAV -->
+<style>
+    .mb-nav-item {
+        background-color: transparent; /* Warna background default */
+    }
+    
+    .mb-nav-item.active {
+        background-color: green; /* Warna background hijau saat aktif */
+    }
+    </style>
 <div class="mb-nav">
-    <div class="mb-move-item"></div>
     <div class="mb-nav-item {{ ($active === "Home") ? 'active' : '' }}">
-        <a href="#home">
+        <a href="/">
             <i class="bx bxs-home"></i>
         </a>
     </div>
-    <div class="mb-nav-item">
-        <a href="#about">
-            <i class='bx bxs-wink-smile'></i>
+    <div class="mb-nav-item {{ ($active === "Katalog") ? 'active' : '' }}">
+        <a href="/katalog">
+            <i class='bx bxs-cart'></i>
         </a>
     </div>
-    <div class="mb-nav-item">
-        <a href="#food-menu-section">
-            <i class='bx bxs-food-menu'></i>
+    
+
+    @auth
+    <div class="mb-nav-item {{ ($active === "Riwayat") ? 'active' : '' }}">
+        <a href="/riwayat">
+            <i class='bx bxs-time'></i>  
         </a>
     </div>
-    <div class="mb-nav-item">
-        <a href="#testimonial">
-            <i class='bx bxs-comment-detail'></i>
+    <div class="mb-nav-item {{ ($active === "Logout") ? 'active' : '' }}">
+        <a href="/logout">
+            <i class='bx bxs-log-out'></i>
         </a>
     </div>
+    @else
+        <div class="mb-nav-item {{ ($active === "Login") ? 'active' : '' }}">
+            <a href="/login">
+                <i class='bx bxs-log-in'></i>
+            </a>
+        </div>
+    @endauth
+        
+    
+    
 </div>
 <!-- END MOBILE NAV -->
 <!-- BACK TO TOP BTN -->
@@ -126,6 +147,11 @@
                     Riwayat
                 </div>
             </a>
+            <a href="/dashboard">
+                <div class="menu-item {{ ($active === "Riwayat") ? 'active' : '' }}">
+                    Helpdesk
+                </div>
+            </a>
             @endif
             {{-- <a href="#about">
                 <div class="menu-item">
@@ -143,17 +169,12 @@
                 </div>
             </a> --}}
             @if (auth()->user())
-            <div class="menu-item">
-                <form method="post" action="{{ route('logout') }}">
-                    @csrf
-                    {{-- <a href="{{ route('logout') }}"
-                        class="nav-link text-secondary font-weight-bold px-0">
-                        <i class="fa fa-user me-sm-1"></i>
-                        <span class="d-sm-inline d-none">Logout</span>
-                    </a> --}}
-                    <button class="btn btn-danger" type="submit">Logout</button>
-                </form>
-            </div>
+                <a href="/logout">
+                    <div class="menu-item {{ ($active === "Logout") ? 'active' : '' }}">
+                        Logout
+                    </div>
+                </a>
+                
 
             @else
             <a href="/login">

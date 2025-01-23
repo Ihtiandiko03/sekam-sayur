@@ -80,67 +80,41 @@
 
                                     @if ((auth()->user()->role) == 4)
                                     <div class="col-6 text-end mb-3">
-                                        <a class="btn bg-gradient-dark mb-0" href="/gudang/pesanan/konfirmasipesanan/{{$pesanan[0]->nomor_resi}}" ><i
-                                            class="ni ni-plus"></i>&nbsp;&nbsp;Konfirmasi Pesanan Siap Diantarkan</a>
+                                        {{-- <a class="btn bg-gradient-dark mb-0" href="/dashboard/pesanan/konfirmasipesanan/{{$pesanan[0]->nomor_resi}}" ><i
+                                            class="ni ni-plus"></i>&nbsp;&nbsp;Pilih Driver Pengiriman</a> --}}
+                                        <button type="button" class="btn bg-gradient-dark mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                            <i class="ni ni-plus"></i>&nbsp;&nbsp;Pilih Driver Pengiriman
+                                            </button>
+                                            
                                     </div>
-                                    
-                                    @elseif ((auth()->user()->role) == 1)
-                                        <div class="col-6 text-end mb-3">
-                                            {{-- <a class="btn bg-gradient-dark mb-0" href="/dashboard/pesanan/konfirmasipesanan/{{$pesanan[0]->nomor_resi}}" ><i
-                                                class="ni ni-plus"></i>&nbsp;&nbsp;Pilih Driver Pengiriman</a> --}}
-                                            <button type="button" class="btn bg-gradient-dark mb-0" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                                <i class="ni ni-plus"></i>&nbsp;&nbsp;Pilih Driver Pengiriman
-                                                </button>
-                                                
-                                        </div>
-                                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Pilih Driver Pengiriman</h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                </div>
-                                                <form method="POST" action="/dashboard/pesanan/pilihdriver">
-                                                    @csrf
-                                                    <div class="modal-body">
-                                                            <div class="mb-3">
-                                                                <label for="nama_driver" class="form-label">Pilih Driver</label>
-                                                                <select class="form-select" name="nama_driver" id="nama_driver">
-                                                                    <option selected>Pilih...</option>
-                                                                    @foreach ($drivers as $d)
-                                                                        <option value="{{$d->id}}">{{$d->name}}</option>
-                                                                    @endforeach
-                                                                </select>
-                                                                <input type="hidden" name="nomor_resi" value="{{ $pesanan[0]->nomor_resi }}">
-                                                            </div>
-                                                        </div>
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                                        <button type="submit" class="btn btn-success">Simpan</button>
-                                                    </div>
-                                                </form>
+                                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Pilih Driver Pengiriman</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                             </div>
-                                            </div>
-                                        </div>
-                                    
-                                    
-                                    @elseif ((auth()->user()->role) == 2)
-                                    <div class="col-6 text-end mb-3">
-                                        <a class="btn bg-gradient-dark mb-0" href="#" >{{$tracking->status}}</a>
-                                        <a class="btn bg-gradient-dark mb-0" href="#" >Last updated : {{$tracking->updated_at}}</a>
-                                        @if($tracking->status === 'Barang Sudah Diterima')
-                                            <a class="btn bg-gradient-dark mt-2" href="#" >Diterima Oleh : {{$tracking->nama_penerima_barang}}</a>
-                                            <a class="btn bg-gradient-dark mt-2" target="_blank" href="/storage/penerimaan/{{$tracking->foto_penerimaan_barang}}" >Bukti Serah Terima</a>
-                                            <form action="/dashboard/pesanan/pesananselesai" method="POST">
+                                            <form method="POST" action="/dashboard/pesanan/pilihdriver">
                                                 @csrf
-                                                <input type="hidden" name="id" value="{{$tracking->id}}">
-                                                <input type="hidden" name="nomor" value="{{$tracking->nomor_resi}}">
-                                                <button class="btn btn-danger mt-2" type="submit">Konfirmasi Pesanan</button>
+                                                <div class="modal-body">
+                                                        <div class="mb-3">
+                                                            <label for="nama_driver" class="form-label">Pilih Driver</label>
+                                                            <select class="form-select" name="nama_driver" id="nama_driver">
+                                                                <option selected>Pilih...</option>
+                                                                @foreach ($drivers as $d)
+                                                                    <option value="{{$d->id}}">{{$d->name}}</option>
+                                                                @endforeach
+                                                            </select>
+                                                            <input type="hidden" name="nomor_resi" value="{{ $pesanan[0]->nomor_resi }}">
+                                                        </div>
+                                                    </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn btn-success">Simpan</button>
+                                                </div>
                                             </form>
-                                        @else
-                                            <a class="btn bg-gradient-dark mt-2" href="#" >Diterima Oleh : {{$tracking->nama_penerima_barang}}</a>
-                                            <a class="btn bg-gradient-dark mt-2" target="_blank" href="/storage/penerimaan/{{$tracking->foto_penerimaan_barang}}" >Bukti Serah Terima</a>
-                                        @endif
+                                        </div>
+                                        </div>
                                     </div>
                                     @endif
 

@@ -82,7 +82,7 @@ style="background-image: url({{ asset('assets/assets/katherine-chase-4MMK78S7eyk
                                 @if (auth()->user())
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <input type="number" class="form-control" name="quantity" placeholder="Jumlah" style="width: 110px;">
+                                        <input type="number" class="form-control" name="quantity" placeholder="Jumlah" style="width: 110px;" min="0" max="100">
                                     </div>
                                     <div class="col-md-6">
                                         <input type="submit" class="btn btn-success" value="Keranjang" class="btnAddAction">

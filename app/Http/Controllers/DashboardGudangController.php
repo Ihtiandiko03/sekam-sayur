@@ -202,7 +202,7 @@ class DashboardGudangController extends Controller
 
     public function konfirmasipesanan($id){
         $validatedData = [
-            'status' => 'Pesanan Siap Diantarkan. Menunggu Konfirmasi Admin',
+            'status' => 'Pesanan Siap Diantarkan. Sedang Mencari Driver',
             'updated_at' => date('Y-m-d H:i:s')
         ];
 

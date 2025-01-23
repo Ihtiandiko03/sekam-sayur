@@ -215,7 +215,7 @@ class DashboardAdminController extends Controller
         $data = DB::select("SELECT distinct(pemesanan.nomor_resi),tracking.status, tracking.paid_stat FROM pemesanan JOIN tracking ON tracking.nomor_resi = pemesanan.nomor_resi WHERE tracking.paid_stat = 'Paid'");
         
         return view('dashboard.pages.adminpesanan', [
-            'link' => 'Pesanan',
+            'link' => 'Cari Driver',
             'pesanan' => $data
         ]);
     }
@@ -226,6 +226,18 @@ class DashboardAdminController extends Controller
 
 
         return view('dashboard.pages.lihatpesanan', [
+            'link' => 'Pesanan',
+            'pesanan' => $data,
+            'drivers' => $getDriver
+        ]);
+    }
+    
+    public function pilihkurir($id){
+        $data = DB::select("SELECT pemesanan.*, products.* FROM pemesanan JOIN products ON pemesanan.id_produk = products.id  where pemesanan.nomor_resi = '$id'");
+        $getDriver = DB::table('users')->where('role', 3)->get();
+
+
+        return view('dashboard.pages.pilihkurir', [
             'link' => 'Pesanan',
             'pesanan' => $data,
             'drivers' => $getDriver

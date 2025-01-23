@@ -56,7 +56,7 @@
                     @elseif ((auth()->user()->role) == 2)
                     <li class="nav-item mt-3 d-flex align-items-center">
                         <div class="ps-4">
-                            <i class="fab fa-codepen" style="color: #f4645f;"></i>
+                            
                         </div>
                         {{-- <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">User</h6> --}}
                     </li>
@@ -71,7 +71,7 @@
                     @elseif ((auth()->user()->role) == 3)
                     <li class="nav-item mt-3 d-flex align-items-center">
                         <div class="ps-4">
-                            <i class="fab fa-codepen" style="color: #f4645f;"></i>
+                            
                         </div>
                         {{-- <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Driver</h6> --}}
                     </li>
@@ -86,7 +86,7 @@
                     @elseif ((auth()->user()->role) == 4)
                     <li class="nav-item mt-3 d-flex align-items-center">
                         <div class="ps-4">
-                            <i class="fab fa-codepen" style="color: #f4645f;"></i>
+                            
                         </div>
                         {{-- <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Gudang</h6> --}}
                     </li>
@@ -107,6 +107,22 @@
                         </a>
                     </li>
                     @endif
+                    <li class="nav-item">
+                        <a class="nav-link" href="/katalog">
+                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-cart text-dark text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Katalog</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/logout">
+                            <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                                <i class="ni ni-user-run text-dark text-sm opacity-10"></i>
+                            </div>
+                            <span class="nav-link-text ms-1">Logout</span>
+                        </a>
+                    </li>
                 </ul>
             </div>
             {{-- <a href="javascript:void(0)" class="switch-trigger background-color">

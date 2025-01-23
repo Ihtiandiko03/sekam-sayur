@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardAdminController;
 use App\Http\Controllers\DashboardDriverController;
 use App\Http\Controllers\DashboardGudangController;
 use App\Http\Controllers\DashboardUserController;
+use App\Http\Controllers\DashboardUserHelpdeskController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Middleware\Authenticate;
@@ -19,7 +20,7 @@ Route::get('/login', [MainController::class, 'login']);
 Route::get('/register', [MainController::class, 'register']);
 Route::post('/daftarakun', [MainController::class, 'daftarakun']);
 Route::post('/loginakun', [MainController::class, 'loginakun']);
-Route::post('/logout', [MainController::class, 'logout'])->name('logout');
+Route::get('/logout', [MainController::class, 'logout'])->name('logout');
 Route::get('/debug', [MainController::class, 'debug']);
 Route::get('/katalog', [MainController::class, 'katalog']);
 Route::get('/riwayat', [MainController::class, 'riwayat']);
@@ -38,6 +39,7 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::get('/dashboard/pesanan', [DashboardAdminController::class, 'pesanan']);
     Route::get('/dashboard/pesanan/lihatpesanan/{id}', [DashboardAdminController::class, 'lihatpesanan']);
     Route::post('/dashboard/pesanan/pilihdriver', [DashboardAdminController::class, 'pilihdriver']);
+    Route::get('/dashboard/pesanan/pilihkurir/{id}', [DashboardAdminController::class, 'pilihkurir']);
     
     
     Route::get('/driver', [DashboardDriverController::class, 'index']);
@@ -60,8 +62,17 @@ Route::middleware(Authenticate::class)->group(function () {
     Route::post('/katalog/checkout', [DashboardUserController::class, 'checkout']);
     Route::get('/katalog/checkout', [DashboardUserController::class, 'checkout']);
     Route::get('/katalog/isiform', [DashboardUserController::class, 'isiform']);
-    
     Route::get('/invoice/{id}', [DashboardUserController::class, 'invoice']);
+    Route::post('/dashboard/pesanan/pesananselesai', [DashboardUserController::class, 'pesananselesai']);
+    Route::get('/helpdesk', [DashboardUserHelpdeskController::class, 'index']);
+    Route::get('/helpdesk/pengajuanhelpdesk', [DashboardUserHelpdeskController::class, 'pengajuanhelpdesk']);
+    Route::post('/helpdesk/simpanpengajuan', [DashboardUserHelpdeskController::class, 'simpanpengajuan']);
+    Route::get('/helpdesk/lihatriwayat/{id}', [DashboardUserHelpdeskController::class, 'lihatriwayat']);
+    
+    Route::get('/adminhelpdesk', [DashboardUserHelpdeskController::class, 'adminhelpdesk']);
+    Route::get('/adminhelpdesk/jawabhelpdesk/{id}', [DashboardUserHelpdeskController::class, 'jawabhelpdesk']);
+    Route::put('/adminhelpdesk/simpandata', [DashboardUserHelpdeskController::class, 'simpandata']);
+
 
 
 

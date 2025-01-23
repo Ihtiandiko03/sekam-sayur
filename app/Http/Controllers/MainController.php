@@ -125,6 +125,7 @@ class MainController extends Controller
         
         return view('dashboard.pages.pesanan', [
             'link' => 'Riwayat',
+            'active' => 'Riwayat',
             'pesanan' => $data
         ]);
     }

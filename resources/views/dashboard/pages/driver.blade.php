@@ -49,7 +49,7 @@
                                     @if(
                                         $p->status != 'Menunggu Driver mengirim barang' && 
                                         $p->status != 'Pesanan berhasil dibuat' && 
-                                        $p->status != 'Pesanan Siap Diantarkan. Menunggu Konfirmasi Admin' &&
+                                        $p->status != 'Pesanan Siap Diantarkan. Sedang Mencari Driver' &&
                                         $p->status != 'Barang Sudah Diterima'
 
                                     )

@@ -14,28 +14,35 @@
             </div> --}}
             <div class="card mb-4">
                 <div class="card-header pb-0">
-                    <h6>Pesanan</h6>
+                    <h6>Helpdesk</h6>
+                    <a href="/helpdesk/pengajuanhelpdesk" class="btn btn-success">Tambah Data</a>
                 </div>
                 <div class="card-body  pt-0 pb-2">
                     <div class="table-responsive">
-                        <table id="example" class="table table-striped" style="width:100%">
+                        <table class="table">
                             <thead>
                               <tr class="text-center">
                                 <th scope="col">#</th>
-                                <th scope="col">Nomor Resi</th>
+                                <th scope="col">Nomor Tiket</th>
                                 <th scope="col">Status</th>
                                 <th scope="col">Aksi</th>
                               </tr>
                             </thead>
                             <tbody>
                                 <?php $i=1; ?>
-                              @foreach ($pesanan as $d)
+                              @foreach ($helpdesk as $h)
                               <tr class="text-center">
                                 <th scope="row"><?=$i++?></th>
-                                <td>{{ $d->nomor_resi }}</td>
-                                <td>{{ $d->status }}</td>
+                                <td>{{ $h->no_tiket }}</td>
+                                <td>{{ $h->status }}</td>
                                 <td>
-                                    <a href="/dashboard/pesanan/pilihkurir/{{$d->nomor_resi}}" class="btn btn-success ">
+                                    @if ($h->status == 'Belum Dikerjakan')
+                                    <a href="/adminhelpdesk/jawabhelpdesk/{{$h->no_tiket}}" class="btn btn-primary ">
+                                        Jawab
+                                    </a>
+                                    @endif
+                                    
+                                    <a href="/helpdesk/lihatriwayat/{{$h->no_tiket}}" class="btn btn-success ">
                                         Lihat
                                     </a>
                                 </td>

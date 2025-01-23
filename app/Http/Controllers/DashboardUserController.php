@@ -198,4 +198,17 @@ class DashboardUserController extends Controller
 
 
     }
+
+
+    public function pesananselesai(Request $request){
+
+        $updated = DB::table('tracking')
+                ->where('id', $request->id)
+                ->update(['status' => 'Pesanan Selesai']);
+
+        if($updated){
+            $nomor = $request->nomor;
+            echo ("<script LANGUAGE='JavaScript'>window.alert('Pesanan SELESAI');window.location.href='/riwayat/lihatpesanan/$nomor';</script>");
+        }
+    }
 }

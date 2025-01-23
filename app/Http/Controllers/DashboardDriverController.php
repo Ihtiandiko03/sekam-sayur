@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class DashboardDriverController extends Controller
 {
     public function index(){
-        $getPengiriman = DB::table('tracking')->where('nama_driver', (auth()->user()->id))->where('status', '!=','Pesanan berhasil dibuat')->where('status', '!=','Pesanan Siap Diantarkan. Menunggu Konfirmasi Admin')->get();
+        $getPengiriman = DB::table('tracking')->where('nama_driver', (auth()->user()->id))->where('status', '!=','Pesanan berhasil dibuat')->where('status', '!=','Pesanan Siap Diantarkan. Sedang Mencari Driver')->get();
 
         return view('dashboard.pages.driver', [
             'link' => 'Pengiriman',

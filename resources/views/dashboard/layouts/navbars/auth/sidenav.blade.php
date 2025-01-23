@@ -44,10 +44,18 @@
                     <span class="nav-link-text ms-1">Pesanan</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a @if($link == "Helpdesk") class="nav-link active" @else class="nav-link" @endif href="/adminhelpdesk">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-send text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Helpdesk</span>
+                </a>
+            </li>
             @elseif ((auth()->user()->role) == 2)
             <li class="nav-item mt-3 d-flex align-items-center">
                 <div class="ps-4">
-                    <i class="fab fa-codepen" style="color: #f4645f;"></i>
+                    <i class="ni ni-single-02" style="color: #f4645f;"></i>
                 </div>
                 <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">User</h6>
             </li>
@@ -59,10 +67,26 @@
                     <span class="nav-link-text ms-1">Riwayat</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/katalog">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-cart text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Katalog</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/helpdesk">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-send text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Helpdesk</span>
+                </a>
+            </li>
             @elseif ((auth()->user()->role) == 3)
             <li class="nav-item mt-3 d-flex align-items-center">
                 <div class="ps-4">
-                    <i class="fab fa-codepen" style="color: #f4645f;"></i>
+                    <i class="ni ni-single-02" style="color: #f4645f;"></i>
                 </div>
                 <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Driver</h6>
             </li>
@@ -77,7 +101,7 @@
             @elseif ((auth()->user()->role) == 4)
             <li class="nav-item mt-3 d-flex align-items-center">
                 <div class="ps-4">
-                    <i class="fab fa-codepen" style="color: #f4645f;"></i>
+                    <i class="ni ni-single-02" style="color: #f4645f;"></i>
                 </div>
                 <h6 class="ms-2 text-uppercase text-xs font-weight-bolder opacity-6 mb-0">Gudang</h6>
             </li>
@@ -97,7 +121,25 @@
                     <span class="nav-link-text ms-1">Pesanan</span>
                 </a>
             </li>
+            <li class="nav-item">
+                <a @if($link == "Cari Driver") class="nav-link active" @else class="nav-link" @endif href="/dashboard/pesanan">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-delivery-fast text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Cari Driver</span>
+                </a>
+            </li>
+
             @endif
+
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">
+                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="ni ni-user-run text-dark text-sm opacity-10"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Logout</span>
+                </a>
+            </li>
         </ul>
     </div>
     <div class="sidenav-footer mx-3 ">
