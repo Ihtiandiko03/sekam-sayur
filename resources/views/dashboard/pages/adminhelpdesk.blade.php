@@ -15,7 +15,6 @@
             <div class="card mb-4">
                 <div class="card-header pb-0">
                     <h6>Helpdesk</h6>
-                    <a href="/helpdesk/pengajuanhelpdesk" class="btn btn-success">Tambah Data</a>
                 </div>
                 <div class="card-body  pt-0 pb-2">
                     <div class="table-responsive">
